@@ -594,12 +594,13 @@ title('Gaussian Input Frequency Response with Noise for varying Time Steps');
 % new Vout_a(:,i+1) = (C/dt + G) \ (C*Vout_a(:,i)/dt + F_a - B);
 
 %%
-% Using Info from Finite Diff LaPlace Lectures Slide 36
+% From Assignment 2
 function [Curr, Vmap, Ex, Ey, eFlowx, eFlowy, Cnx] = current_solver(stepped_voltage)
 %current_solver 
 % Inputs: stepped_voltage = the present voltage value that goes from 0.1 to
 % 10V (assignment 4 specs)
-% Output: avgCurr = average Current for that Voltage value
+% Outputs: Cnx = average Current for that Voltage value
+%          Curr, Vmap, Ex, Ey, eFlowx, eFlowy
 
 Len = 200e-9;
 Wid = 100e-9;
@@ -733,8 +734,9 @@ end
 
 %%
 function [x_axis, output_V, I_new] = step_solver(C_noise, G_noise, step_count)
-%Step_Solver Summary of this function goes here
-%   Detailed explanation goes here
+%Step_Solver takes the C, G, #iterations as input
+%   Outputs a vector to be plotted for x-axis, the output voltage, and
+%   current noise levels
 
 
 dt = 1/step_count;                      % change dt based on current step size
